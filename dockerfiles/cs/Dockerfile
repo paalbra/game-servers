@@ -45,6 +45,8 @@ RUN set -x && \
     tar -zxvf downloads/amxmodx-1.8.2-base-linux.tar.gz --directory cs/cstrike && \
     tar -zxvf downloads/amxmodx-1.8.2-cstrike-linux.tar.gz --directory cs/cstrike && \
     echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
+    echo "KillerChat\nShowAttackers\nShowVictims\nShowKiller\nShowTeamScore\nShowTotalStats\nShowBestScore\nShowMostDisruptive\nShowStats\nShowDistHS\nEndPlayer\nEndTop15\nSayHP\nSayStatsMe\nSayRankStats\nSayMe\nSayRank\nSayReport\nSayScore\nSayTop15\nSayStatsAll\nSpecRankInfo" > cs/cstrike/addons/amxmodx/configs/stats.ini && \
+    sed -i 's/csstats_rankbots .*/csstats_rankbots 1/g' cs/cstrike/addons/amxmodx/configs/amxx.cfg && \
 
     echo "#### PLUGIN AMXMODX - ADVANCED BULLET DAMAGE" && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=39600" -O "cs/cstrike/addons/amxmodx/plugins/abd.amxx" && \
