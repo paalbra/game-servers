@@ -10,6 +10,10 @@ USER steam
 WORKDIR "/home/steam"
 
 RUN set -x && \
+    echo "#### UTIL" && \
+    sed -i 's/^#alias \(.*\)/alias \1/g' .bashrc && \
+    echo 'alias wget="wget --content-disposition"' >> .bashrc && \
+
     mkdir downloads && \
     mkdir steamcmd && \
     echo "#### STEAMCMD" && \
