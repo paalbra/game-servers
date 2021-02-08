@@ -2,7 +2,7 @@ FROM library/debian:latest
 
 RUN set -x && \
     apt update && \
-    apt install -y dos2unix file lib32gcc1 nano unzip vim wget xz-utils && \
+    apt install -y dos2unix file lib32gcc1 nano rsync unzip vim wget xz-utils && \
     useradd --uid 1000 --shell /bin/bash --create-home steam
 
 USER steam
@@ -48,6 +48,12 @@ RUN set -x && \
 
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=39600" -O "cs/cstrike/addons/amxmodx/plugins/abd.amxx" && \
     echo abd.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
+    wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=67248" -O "cs/cstrike/addons/amxmodx/plugins/ultimate_sounds.amxx" && \
+    echo ultimate_sounds.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+    wget "https://forums.alliedmods.net/attachment.php?attachmentid=67247&d=1275855421" -O "downloads/Ultimate_Sounds_Pack.zip" && \
+    unzip downloads/Ultimate_Sounds_Pack.zip -d downloads/ && \
+    rsync -avz downloads/Ultimate\ Sounds_Pack/ cs/cstrike/ && \
 
     echo "#### CLEAN" && \
     rm -rf steamcmd && \
