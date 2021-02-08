@@ -2,7 +2,7 @@ FROM library/debian:latest
 
 RUN set -x && \
     apt update && \
-    apt install -y dos2unix file lib32gcc1 nano unzip vim wget && \
+    apt install -y dos2unix file lib32gcc1 nano unzip vim wget xz-utils && \
     useradd --uid 1000 --shell /bin/bash --create-home steam
 
 USER steam
@@ -25,18 +25,17 @@ RUN set -x && \
     chmod +x run_server.sh  && \
 
     echo "#### METAMOD" && \
-    wget "https://downloads.sourceforge.net/project/metamod/Metamod%20Binaries/1.20/metamod-1.20-linux.tar.gz" -O "downloads/metamod-1.20-linux.tar.gz" && \
+    wget "https://github.com/Bots-United/metamod-p/releases/download/v1.21p38/metamod_i686_linux_win32-1.21p38.tar.xz" -O "downloads/metamod_i686_linux_win32-1.21p38.tar.xz" && \
     mkdir -p cs/cstrike/addons/metamod/dlls && \
-    tar -zxvf downloads/metamod-1.20-linux.tar.gz --directory cs/cstrike/addons/metamod/dlls/ metamod_i386.so && \
-    ln -s metamod_i386.so cs/cstrike/addons/metamod/dlls/metamod.so && \
+    tar -Jxvf downloads/metamod_i686_linux_win32-1.21p38.tar.xz --directory cs/cstrike/addons/metamod/dlls/ metamod.so && \
     sed -i 's/gamedll_linux .*/gamedll_linux "addons\/metamod\/dlls\/metamod.so"/g' cs/cstrike/liblist.gam && \
 
-    echo "#### PLUGIN ADMINMOD" && \
-    wget "https://downloads.sourceforge.net/project/halflifeadmin/halflifeadmin/2.50.60/halflife-admin-2.50.60-linux.tar.gz" -O "downloads/halflife-admin-2.50.60-linux.tar.gz" && \
-    mkdir -p cs/cstrike/addons/adminmod/config cs/cstrike/addons/adminmod/dlls && \
-    tar -zxvf downloads/halflife-admin-2.50.60-linux.tar.gz --strip-components 2 --directory cs/cstrike/addons/adminmod/config Adminmod/config/adminmod.cfg && \
-    tar -zxvf downloads/halflife-admin-2.50.60-linux.tar.gz --strip-components 2 --directory cs/cstrike/addons/adminmod/dlls Adminmod/dlls/admin_MM_i386.so Adminmod/dlls/amx_admin.so && \
-    echo "linux addons/adminmod/dlls/admin_MM_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
+    echo "#### PLUGIN AMXMODX" && \
+    wget "https://www.amxmodx.org/release/amxmodx-1.8.2-base-linux.tar.gz" -O "downloads/amxmodx-1.8.2-base-linux.tar.gz" && \
+    wget "https://www.amxmodx.org/release/amxmodx-1.8.2-cstrike-linux.tar.gz" -O "downloads/amxmodx-1.8.2-cstrike-linux.tar.gz" && \
+    tar -zxvf downloads/amxmodx-1.8.2-base-linux.tar.gz --directory cs/cstrike && \
+    tar -zxvf downloads/amxmodx-1.8.2-cstrike-linux.tar.gz --directory cs/cstrike && \
+    echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
 
     echo "#### PLUGIN PODBOT" && \
     wget "https://files.gamebanana.com/gamefiles/podbot_full_v3b21.zip" -O "downloads/podbot_full_v3b21.zip" && \
