@@ -46,6 +46,9 @@ RUN set -x && \
     unzip downloads/podbot_full_v3b21.zip -x "podbot/pod_v3 docs/*" -d cs/cstrike/addons/ && \
     echo "linux addons/podbot/podbot_mm_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
 
+    wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=39600" -O "cs/cstrike/addons/amxmodx/plugins/abd.amxx" && \
+    echo abd.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
     echo "#### CLEAN" && \
     rm -rf steamcmd && \
     echo "#### DONE"
