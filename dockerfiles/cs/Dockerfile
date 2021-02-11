@@ -59,6 +59,10 @@ RUN set -x && \
     unzip downloads/Ultimate_Sounds_Pack.zip -d downloads/ && \
     rsync -avz downloads/Ultimate\ Sounds_Pack/ cs/cstrike/ && \
 
+    echo "#### PLUGIN AMXMODX - ULTIMATE GORE" && \
+    wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=534" -O "cs/cstrike/addons/amxmodx/plugins/amx_gore_ultimate.amxx" && \
+    echo amx_gore_ultimate.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
     echo "## CLEAN" && \
     rm -rf steamcmd && \
     echo "# DONE"
