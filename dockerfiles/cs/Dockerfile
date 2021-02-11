@@ -25,7 +25,7 @@ RUN set -x && \
     ./steamcmd/steamcmd.sh +login anonymous +force_install_dir "${HOME}/cs" +app_update 90 validate +quit && \
     mkdir "${HOME}/.steam/sdk32" && \
     cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so" && \
-    echo "#!/bin/bash\ncd cs/\n./hlds_run -game cstrike +maxplayers 8 +map de_dust" > run_server.sh && \
+    echo "#!/bin/bash\ncd cs/\n./hlds_run -game cstrike +maxplayers 24 +map de_dust" > run_server.sh && \
     chmod +x run_server.sh
 
 RUN set -x && \
