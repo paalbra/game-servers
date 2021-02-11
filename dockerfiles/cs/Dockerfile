@@ -26,8 +26,9 @@ RUN set -x && \
     mkdir "${HOME}/.steam/sdk32" && \
     cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so" && \
     echo "#!/bin/bash\ncd cs/\n./hlds_run -game cstrike +maxplayers 8 +map de_dust" > run_server.sh && \
-    chmod +x run_server.sh  && \
+    chmod +x run_server.sh
 
+RUN set -x && \
     echo "## METAMOD" && \
     wget "https://github.com/Bots-United/metamod-p/releases/download/v1.21p38/metamod_i686_linux_win32-1.21p38.tar.xz" -O "downloads/metamod_i686_linux_win32-1.21p38.tar.xz" && \
     mkdir -p cs/cstrike/addons/metamod/dlls && \
@@ -46,8 +47,9 @@ RUN set -x && \
     tar -zxvf downloads/amxmodx-1.8.2-cstrike-linux.tar.gz --directory cs/cstrike && \
     echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
     echo "KillerChat\nShowAttackers\nShowVictims\nShowKiller\nShowTeamScore\nShowTotalStats\nShowBestScore\nShowMostDisruptive\nShowStats\nShowDistHS\nEndPlayer\nEndTop15\nSayHP\nSayStatsMe\nSayRankStats\nSayMe\nSayRank\nSayReport\nSayScore\nSayTop15\nSayStatsAll\nSpecRankInfo" > cs/cstrike/addons/amxmodx/configs/stats.ini && \
-    sed -i 's/csstats_rankbots .*/csstats_rankbots 1/g' cs/cstrike/addons/amxmodx/configs/amxx.cfg && \
+    sed -i 's/csstats_rankbots .*/csstats_rankbots 1/g' cs/cstrike/addons/amxmodx/configs/amxx.cfg
 
+RUN set -x && \
     echo "#### PLUGIN AMXMODX - ADVANCED BULLET DAMAGE" && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=39600" -O "cs/cstrike/addons/amxmodx/plugins/abd.amxx" && \
     echo abd.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
