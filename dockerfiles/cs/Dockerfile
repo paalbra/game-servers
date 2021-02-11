@@ -63,6 +63,10 @@ RUN set -x && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=534" -O "cs/cstrike/addons/amxmodx/plugins/amx_gore_ultimate.amxx" && \
     echo amx_gore_ultimate.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
 
+    echo "#### PLUGIN AMXMODX - KILL ASSIST" && \
+    wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=47531" -O "cs/cstrike/addons/amxmodx/plugins/kill_assist.amxx" && \
+    echo kill_assist.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
     echo "## CLEAN" && \
     rm -rf steamcmd && \
     echo "# DONE"
