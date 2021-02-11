@@ -69,6 +69,10 @@ RUN set -x && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=47531" -O "cs/cstrike/addons/amxmodx/plugins/kill_assist.amxx" && \
     echo kill_assist.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
 
+    echo "#### PLUGIN AMXMODX - KILLER VIEW" && \
+    wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=105628" -O "cs/cstrike/addons/amxmodx/plugins/killer_view.amxx" && \
+    echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
     echo "## CLEAN" && \
     rm -rf steamcmd && \
     echo "# DONE"
