@@ -71,7 +71,17 @@ RUN set -x && \
 
     echo "#### PLUGIN AMXMODX - KILLER VIEW" && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=105628" -O "cs/cstrike/addons/amxmodx/plugins/killer_view.amxx" && \
-    echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+    echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini
+
+RUN set -x && \
+    echo "## CONFIGURE" && \
+    dos2unix cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/pb_skin 5/pb_skin 1/g' cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/pb_minbotskill 95/pb_minbotskill 60/g' cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/pb_autokill 0/pb_autokill 1/g' cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/pb_autokilldelay 45/pb_autokilldelay 15/g' cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/pb add 100/#pb add 100/g' cs/cstrike/addons/podbot/podbot.cfg && \
+    echo "pb fillserver" >> cs/cstrike/addons/podbot/podbot.cfg && \
 
     echo "## CLEAN" && \
     rm -rf steamcmd && \
