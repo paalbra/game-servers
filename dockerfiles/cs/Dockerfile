@@ -2,7 +2,7 @@ FROM library/debian:latest
 
 RUN set -x && \
     apt update && \
-    apt install -y dos2unix file lib32gcc1 nano rsync unzip vim wget xz-utils && \
+    apt install -y dos2unix file lib32gcc1 nano rsync unrar-free unzip vim wget xz-utils && \
     useradd --uid 1000 --shell /bin/bash --create-home steam
 
 USER steam
@@ -71,7 +71,12 @@ RUN set -x && \
 
     echo "#### PLUGIN AMXMODX - KILLER VIEW" && \
     wget "http://www.amxmodx.org/plcompiler_vb.cgi?file_id=105628" -O "cs/cstrike/addons/amxmodx/plugins/killer_view.amxx" && \
-    echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini
+    echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
+
+    echo "#### PLUGIN AMXMODX - GUN GAME" && \
+    wget "https://files.gamebanana.com/gamefiles/gungame_amxx_213b_31331.rar" -O "downloads/gungame_amxx_213b_31331.rar" && \
+    unrar downloads/gungame_amxx_213b_31331.rar downloads && \
+    rsync -avz --exclude '*.url' downloads/GunGame\ AMXX\ 2.13b/GunGame\ AMXX\ 2.13b/ cs/cstrike/
 
 RUN set -x && \
     echo "## CONFIGURE" && \
