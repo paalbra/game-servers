@@ -3,6 +3,8 @@ FROM library/debian:latest
 RUN set -x && \
     apt update && \
     apt install -y dos2unix file lib32gcc1 nano rsync unrar-free unzip vim wget xz-utils && \
+    apt autoremove -y && \
+    apt clean autoclean && \
     useradd --uid 1000 --shell /bin/bash --create-home steam
 
 USER steam
@@ -91,14 +93,6 @@ RUN set -x && \
     echo "## CLEAN" && \
     rm -rf steamcmd && \
     echo "# DONE"
-
-USER root
-
-RUN set -x && \
-    apt autoremove -y && \
-    apt clean autoclean
-
-USER steam
 
 EXPOSE 27015
 
