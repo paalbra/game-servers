@@ -79,7 +79,8 @@ RUN set -x && \
     echo "#### PLUGIN AMXMODX - GUN GAME" && \
     wget "https://files.gamebanana.com/gamefiles/gungame_amxx_213b_31331.rar" -O "downloads/gungame_amxx_213b_31331.rar" && \
     unrar downloads/gungame_amxx_213b_31331.rar downloads && \
-    rsync -avz --exclude '*.url' downloads/GunGame\ AMXX\ 2.13b/GunGame\ AMXX\ 2.13b/ cs/cstrike/
+    rsync -avz --exclude '*.url' downloads/GunGame\ AMXX\ 2.13b/GunGame\ AMXX\ 2.13b/ cs/cstrike/ && \
+    echo ";gungame.amxx" >> cs/cstrike/addons/amxmodx/configs/plugins.ini
 
 RUN set -x && \
     echo "## CONFIGURE" && \
@@ -90,6 +91,7 @@ RUN set -x && \
     sed -i 's/pb_autokilldelay 45/pb_autokilldelay 15/g' cs/cstrike/addons/podbot/podbot.cfg && \
     sed -i 's/pb add 100/#pb add 100/g' cs/cstrike/addons/podbot/podbot.cfg && \
     echo "pb fillserver" >> cs/cstrike/addons/podbot/podbot.cfg && \
+    sed -i 's/gg_teamplay 1/gg_teamplay 0/g' cs/cstrike/addons/amxmodx/configs/gungame.cfg && \
 
     echo "# DONE"
 
