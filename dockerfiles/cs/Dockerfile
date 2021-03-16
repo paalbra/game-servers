@@ -96,3 +96,4 @@ RUN set -x && \
 EXPOSE 27015
 
 ENTRYPOINT ["./run_server.sh"]
+CMD ["de_dust"]
