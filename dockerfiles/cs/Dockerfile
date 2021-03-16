@@ -28,7 +28,8 @@ RUN set -x && \
     ./steamcmd/steamcmd.sh +login anonymous +force_install_dir "${HOME}/cs" +app_update 90 validate +quit || true && \
     ./steamcmd/steamcmd.sh +login anonymous +force_install_dir "${HOME}/cs" +app_update 90 validate +quit && \
     mkdir "${HOME}/.steam/sdk32" && \
-    cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so"
+    cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so" && \
+    rm -rf steamcmd
 
 RUN set -x && \
     echo "## METAMOD" && \
@@ -90,8 +91,6 @@ RUN set -x && \
     sed -i 's/pb add 100/#pb add 100/g' cs/cstrike/addons/podbot/podbot.cfg && \
     echo "pb fillserver" >> cs/cstrike/addons/podbot/podbot.cfg && \
 
-    echo "## CLEAN" && \
-    rm -rf steamcmd && \
     echo "# DONE"
 
 EXPOSE 27015
