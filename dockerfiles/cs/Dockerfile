@@ -11,6 +11,8 @@ USER steam
 
 WORKDIR "/home/steam"
 
+COPY files/run_server.sh .
+
 RUN set -x && \
     echo "# UTIL" && \
     sed -i 's/^#alias \(.*\)/alias \1/g' .bashrc && \
@@ -26,9 +28,7 @@ RUN set -x && \
     ./steamcmd/steamcmd.sh +login anonymous +force_install_dir "${HOME}/cs" +app_update 90 validate +quit || true && \
     ./steamcmd/steamcmd.sh +login anonymous +force_install_dir "${HOME}/cs" +app_update 90 validate +quit && \
     mkdir "${HOME}/.steam/sdk32" && \
-    cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so" && \
-    echo "#!/bin/bash\ncd cs/\n./hlds_run -game cstrike +maxplayers 24 +map de_dust" > run_server.sh && \
-    chmod +x run_server.sh
+    cp "${HOME}/steamcmd/linux32/steamclient.so" "${HOME}/.steam/sdk32/steamclient.so"
 
 RUN set -x && \
     echo "## METAMOD" && \
