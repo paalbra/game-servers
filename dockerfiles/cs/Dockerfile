@@ -84,7 +84,9 @@ RUN set -x && \
 
 RUN set -x && \
     echo "## CONFIGURE" && \
-    dos2unix cs/cstrike/addons/podbot/podbot.cfg && \
+    find cs/cstrike/ -type f -name '*.cfg' -or -name '*.ini' -exec dos2unix {} \; && \
+    echo "mp_limitteams 0" >> cs/cstrike/server.cfg && \
+    echo "mp_autoteambalance 0" >> cs/cstrike/server.cfg && \
     sed -i 's/pb_skin 5/pb_skin 1/g' cs/cstrike/addons/podbot/podbot.cfg && \
     sed -i 's/pb_minbotskill 95/pb_minbotskill 60/g' cs/cstrike/addons/podbot/podbot.cfg && \
     sed -i 's/pb_autokill 0/pb_autokill 1/g' cs/cstrike/addons/podbot/podbot.cfg && \
