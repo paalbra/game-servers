@@ -39,7 +39,7 @@ RUN set -x && \
     sed -i 's/gamedll_linux .*/gamedll_linux "addons\/metamod\/dlls\/metamod.so"/g' cs/cstrike/liblist.gam && \
 
     echo "### PLUGIN PODBOT" && \
-    wget "https://files.gamebanana.com/gamefiles/podbot_full_v3b21.zip" -O "downloads/podbot_full_v3b21.zip" && \
+    wget "https://files.gamebanana.com/mods/podbot_full_v3b21.zip" -O "downloads/podbot_full_v3b21.zip" && \
     unzip downloads/podbot_full_v3b21.zip -x "podbot/pod_v3 docs/*" -d cs/cstrike/addons/ && \
     echo "linux addons/podbot/podbot_mm_i386.so" >> cs/cstrike/addons/metamod/plugins.ini && \
 
@@ -77,7 +77,7 @@ RUN set -x && \
     echo killer_view.amxx >> cs/cstrike/addons/amxmodx/configs/plugins.ini && \
 
     echo "#### PLUGIN AMXMODX - GUN GAME" && \
-    wget "https://files.gamebanana.com/gamefiles/gungame_amxx_213b_31331.rar" -O "downloads/gungame_amxx_213b_31331.rar" && \
+    wget "https://files.gamebanana.com/mods/gungame_amxx_213b_31331.rar" -O "downloads/gungame_amxx_213b_31331.rar" && \
     unrar downloads/gungame_amxx_213b_31331.rar downloads && \
     rsync -avz --exclude '*.url' downloads/GunGame\ AMXX\ 2.13b/GunGame\ AMXX\ 2.13b/ cs/cstrike/ && \
     echo ";gungame.amxx" >> cs/cstrike/addons/amxmodx/configs/plugins.ini
