@@ -1,16 +1,7 @@
 #!/bin/bash
 
-if [ -z "$1" ];then
-    MAP="de_dust"
-else
-    MAP="$1"
-fi
-
-if [ -z "$2" ];then
-    MODE="normal"
-else
-    MODE="$2"
-fi
+MAP="${1:-de_dust}"
+MODE="${2:-normal}"
 
 if [ "$MODE" = "normal" ]; then
     sed -i 's/pb_autokill .*/pb_autokill 1/g' cs/cstrike/addons/podbot/podbot.cfg
