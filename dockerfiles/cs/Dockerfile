@@ -1,4 +1,4 @@
-FROM library/debian:latest
+FROM library/debian:10
 
 RUN set -x && \
     apt update && \
